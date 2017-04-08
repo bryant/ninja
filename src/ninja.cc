@@ -805,6 +805,7 @@ bool DebugEnable(const string& name) {
 "  explain      explain what caused a command to execute\n"
 "  keepdepfile  don't delete depfiles after they're read by ninja\n"
 "  keeprsp      don't delete @response files on success\n"
+"  extoutput    don't rebuild on dirty output\n"
 #ifdef _WIN32
 "  nostatcache  don't batch stat() calls per directory and cache them\n"
 #endif
@@ -822,6 +823,8 @@ bool DebugEnable(const string& name) {
   } else if (name == "keeprsp") {
     g_keep_rsp = true;
     return true;
+  } else if (name == "extoutput") {
+    g_ext_output = true;
   } else if (name == "nostatcache") {
     g_experimental_statcache = false;
     return true;
